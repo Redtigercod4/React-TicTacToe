@@ -47,4 +47,52 @@ describe('TicTacToe logic', () => {
         // Calls the checkForSpaces method and checks that the board has no spaces
         expect(game.checkForSpaces()).toBe(false)
     })
+
+    it('Checks the rows and columns of the board if there is a winning move with no chance of one', () => {
+
+        // Creates a board with no winning moves
+        let board = [["X", "O", ""], ["X", "", ""], ["", "", "X"]]
+
+        // Calls the TicTacToe Class and passes the board variable to the constructor
+        const game = new TicTacToe(board);
+
+        // Calls the checkForWinner method and checks that there is no winning move
+        expect(game.checkForWinner()).toEqual(0)
+    })
+
+    it('Checks the rows and columns of the board if there is a winning move with a chance of one horizontally', () => {
+
+        // Creates a board with a winning move
+        let board = [["O", "O", "_"], ["X", "O", "X"], ["_", "X", "X"]]
+
+        // Calls the TicTacToe Class and passes the board variable to the constructor
+        const game = new TicTacToe(board);
+
+        // Calls the checkForWinner method and checks that there is a winning move horizontally on the top row
+        expect(game.checkForWinner()).toEqual(1)
+    })
+
+    it('Checks the rows and columns of the board if there is a winning move with a chance of one vertically', () => {
+
+        // Creates a board with a winning move
+        let board = [["X", "O", "X"], ["X", "O", "O"], ["O", "_", "X"]]
+
+        // Calls the TicTacToe Class and passes the board variable to the constructor
+        const game = new TicTacToe(board);
+
+        // Calls the checkForWinner method and checks that there is a winning move vertically on the midde column
+        expect(game.checkForWinner()).toEqual(1)
+    })
+
+    it('Checks the rows and columns of the board if there is a winning move with a chance of one diagonally', () => {
+
+        // Creates a board with a winning move
+        let board = [["O", "O", "X"], ["X", "O", "O"], ["X", "X", "_"]]
+
+        // Calls the TicTacToe Class and passes the board variable to the constructor
+        const game = new TicTacToe(board);
+
+        // Calls the checkForWinner method and checks that there is a winning move diagonally
+        expect(game.checkForWinner()).toEqual(1)
+    })
 })
