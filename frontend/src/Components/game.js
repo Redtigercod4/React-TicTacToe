@@ -1,6 +1,8 @@
 import React from "react";
 import Board from "./board";
 import { calculateWinner } from "./calculateWinner";
+import { boardManipulation, commsLayer } from "./commsLayer";
+import { TicTacToe } from "./algorithm";
 import './game.css';
 
 class Game extends React.Component {
@@ -13,9 +15,11 @@ class Game extends React.Component {
       stepNumber: 0,
       xIsNext: true,
     }
+    this.board = [["_", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]];
   }
 
   handleClick(i) {
+    boardManipulation(i, this.state.xIsNext ? 'X' : 'O', this.board);
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -58,6 +62,14 @@ class Game extends React.Component {
       status = 'Winner:' + winner;
     } else {
       status = 'Next player:' + (this.state.xIsNext ? 'X' : 'O');
+    }
+    if (this.state.xIsNext === false) {
+      const game = new TicTacToe();
+      game.checkForSpaces(this.board);
+      game.checkForWinner(this.board);
+      let move = game.bestMovePossible(this.board);
+      let updatedMove = commsLayer(move);
+      this.handleClick(updatedMove);
     }
 
     return (

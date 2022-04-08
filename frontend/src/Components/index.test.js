@@ -1,4 +1,4 @@
-const { TicTacToe } = require('./index');
+const { TicTacToe } = require('./algorithm');
 
 describe('TicTacToe logic', () => {
     it('Checks if AI is O and Player is X', () => {

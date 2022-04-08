@@ -5,8 +5,6 @@ class TicTacToe {
       player: "X",
       ai: "O",
     };
-
-    let row, col;
   }
 
   // Returns the Markers for the Player and AI
@@ -93,7 +91,7 @@ class TicTacToe {
       let best = 1000;
 
       for (let row = 0; row < 3; row++) {
-        for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
           if (board[row][col] == "_") {
             board[row][col] = this.game.ai;
             best = Math.min(best, game.minimax(board, depth + 1, !isMax));
