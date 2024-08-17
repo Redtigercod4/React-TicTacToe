@@ -1,6 +1,8 @@
 # React Tic-Tac-Toe
 License: ``MIT``
 
+Project Status: ``Completed``
+
 This project was part of a Web Development Bootcamp to build out a basic Tic Tac Toe app within ReactJS. This has been enhanced with the integration of playing against the computer with a replay feature.
 
 ## How to get started
